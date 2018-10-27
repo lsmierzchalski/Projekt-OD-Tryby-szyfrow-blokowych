@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Block_Cipher_Modes_WPF
+namespace Block_Cipher_Modes_WPF.Pages
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for BasicBlockCipherModesPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class BasicBlockCipherModesPage : Page
     {
-        public MainWindow()
+        public BasicBlockCipherModesPage()
         {
             InitializeComponent();
         }
