@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Block_Cipher_Modes_WPF.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace Block_Cipher_Modes_WPF.Pages
         public BasicBlockCipherModesPage()
         {
             InitializeComponent();
+            DataContext = new BasicBlockCipherModesViewModel(RichTextBoxPlainText, RichTetBoxCipherText);
         }
     }
 }
