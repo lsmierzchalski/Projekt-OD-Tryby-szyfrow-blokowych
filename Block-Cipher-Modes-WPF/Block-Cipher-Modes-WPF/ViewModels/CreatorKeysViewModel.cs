@@ -71,7 +71,7 @@ namespace Block_Cipher_Modes_WPF.ViewModels
         private void RandomKeyValue()
         {
             List<byte> newListByteKey = new List<byte>();
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 16; i++)
             {
                 byte[] intBytes = BitConverter.GetBytes(rnd.Next(0, 256));
                 newListByteKey.Add(intBytes[0]);

@@ -18,7 +18,7 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -34,7 +34,7 @@
 
         <StackPanel Grid.Row="4" Grid.Column="1" >
             <TextBlock Text="Klucz"/>
-            <TextBox />
+            <TextBox Text="{Binding Key}" />
             <TextBlock Text="IV"/>
             <TextBox />
             <Separator Height="20"/>
@@ -43,7 +43,7 @@
             <Separator Height="20"/>
             <Button Content="Szyfruj" Command="{Binding Encrypt_Click}" />
             <StackPanel Margin="5"/>
-            <Button Content="Deszyfruj" />
+            <Button Content="Deszyfruj" Command="{Binding Decrypt_Click}" />
             <Separator Height="20"/>
             <TextBlock Text="Czas szyfrowania"/>
             <TextBox IsReadOnly="True" />

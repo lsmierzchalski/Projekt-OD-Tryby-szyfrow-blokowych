@@ -10,7 +10,7 @@
 
     <StackPanel>
         <TextBlock Text="Kreator kluczy"/>
-        <TextBlock Text="Długość klucza wynosić 128 bitów, składa się z 8 bajtów."/> 
+        <TextBlock Text="Długość klucza wynosić 128 bitów, składa się z 16 bajtów."/> 
         <TextBlock Text="Każdy bajt może przyjąć wartość z zakresu od 0-255."/>
         <StackPanel Orientation="Horizontal">
             <TextBox Width="50" Text="{Binding ListByteKey[0]}"/>
@@ -29,11 +29,29 @@
             <TextBlock Text="-"/>
             <TextBox Width="50" Text="{Binding ListByteKey[7]}"/>
         </StackPanel>
+        <StackPanel Height="5"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBox Width="50" Text="{Binding ListByteKey[8]}"/>
+            <TextBlock Text="-"/>
+            <TextBox Width="50" Text="{Binding ListByteKey[9]}"/>
+            <TextBlock Text="-"/>
+            <TextBox Width="50" Text="{Binding ListByteKey[10]}"/>
+            <TextBlock Text="-"/>
+            <TextBox Width="50" Text="{Binding ListByteKey[11]}"/>
+            <TextBlock Text="-"/>
+            <TextBox Width="50" Text="{Binding ListByteKey[12]}"/>
+            <TextBlock Text="-"/>
+            <TextBox Width="50" Text="{Binding ListByteKey[13]}"/>
+            <TextBlock Text="-"/>
+            <TextBox Width="50" Text="{Binding ListByteKey[14]}"/>
+            <TextBlock Text="-"/>
+            <TextBox Width="50" Text="{Binding ListByteKey[15]}"/>
+        </StackPanel>
         <StackPanel Orientation="Horizontal">
             <Button Content="Losuj klucz" Width="100" HorizontalAlignment="Left" Command="{Binding RandomKey_Click}" Margin="5"/>
             <Button Content="Generuj klucz" Width="100" HorizontalAlignment="Left" Command="{Binding CreatorKey_Click}" Margin="5"/>
         </StackPanel>
         <TextBlock Text="Klucz zakodowany Base64"/>
-        <TextBox Width="150" HorizontalAlignment="Left" Text="{Binding KeyBase64}" IsReadOnly="True" />
+        <TextBox Width="250" HorizontalAlignment="Left" Text="{Binding KeyBase64}" IsReadOnly="True" />
     </StackPanel>
 </Page>

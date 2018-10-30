@@ -22,5 +22,16 @@ namespace Block_Cipher_Modes_WPF
                 return (T[])bf.Deserialize(ms);
             }
         }
+
+        public static byte[] AddPaddingZero(byte[] data)
+        {
+            List<byte> listData = new List<Byte>(data);
+            bool first = true;
+            for (int i=listData.Capacity; i < listData.Capacity/128+1 * 128 - 1; i++)
+            {
+                listData.Add(1);
+            }
+            return listData.ToArray();
+        }
     }
 }

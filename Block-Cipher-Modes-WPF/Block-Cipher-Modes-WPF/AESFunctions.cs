@@ -18,7 +18,7 @@ namespace Block_Cipher_Modes_WPF
                 aesAlg.Mode = CipherMode.ECB;
                 aesAlg.BlockSize = 128;
                 aesAlg.KeySize = 128;
-                aesAlg.Padding = PaddingMode.None;
+                aesAlg.Padding = PaddingMode.Zeros;
                 aesAlg.Key = Key;
 
                 // Create a decrytor to perform the stream transform.
