@@ -12,6 +12,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <StackPanel>
+            <Button Command="{Binding CreatorKeys_Click}" Content="Generator kluczy" Margin="5"/>
             <Button Command="{Binding BasicBlockCipherModes_Click}" Content="Podstawowe tryby" Margin="5"/>
             <Button Command="{Binding Zadanie2_Click}" Content="Zadanie 2" Margin="5" IsEnabled="False"/>
             <Button Command="{Binding Zadanie3_Click}" Content="Zadanie 3" Margin="5" IsEnabled="False"/>

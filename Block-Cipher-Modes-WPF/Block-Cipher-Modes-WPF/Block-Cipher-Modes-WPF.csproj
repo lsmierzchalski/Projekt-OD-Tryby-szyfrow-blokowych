@@ -62,6 +62,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\CreatorKeysPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -71,6 +75,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BlockCipherModesFunctions.cs" />
+    <Compile Include="HelpfulFunctions.cs" />
     <Compile Include="ObservableObject.cs" />
     <Compile Include="Pages\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
@@ -78,8 +84,12 @@
     <Compile Include="Pages\BasicBlockCipherModesPage.xaml.cs">
       <DependentUpon>BasicBlockCipherModesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\CreatorKeysPage.xaml.cs">
+      <DependentUpon>CreatorKeysPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RelayCommand.cs" />
     <Compile Include="ViewModels\BasicBlockCipherModesViewModel.cs" />
+    <Compile Include="ViewModels\CreatorKeysViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Windows\MainWindow.xaml.cs">

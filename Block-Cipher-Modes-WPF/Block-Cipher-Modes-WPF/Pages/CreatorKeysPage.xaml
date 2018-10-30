@@ -1,0 +1,39 @@
+﻿<Page x:Class="Block_Cipher_Modes_WPF.Pages.CreatorKeysPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Block_Cipher_Modes_WPF.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CreatorKeysPage">
+
+    <StackPanel>
+        <TextBlock Text="Kreator kluczy"/>
+        <TextBlock Text="Długość klucza wynosić 128 bitów, składa się z 8 bajtów."/> 
+        <TextBlock Text="Każdy bajt może przyjąć wartość z zakresu od 0-255."/>
+        <StackPanel Orientation="Horizontal">
+            <TextBox Width="50" Text="{Binding ListByteKey[0]}"/>
+            <TextBlock Text="-"/>
+            <TextBox Width="50" Text="{Binding ListByteKey[1]}"/>
+            <TextBlock Text="-"/>
+            <TextBox Width="50" Text="{Binding ListByteKey[2]}"/>
+            <TextBlock Text="-"/>
+            <TextBox Width="50" Text="{Binding ListByteKey[3]}"/>
+            <TextBlock Text="-"/>
+            <TextBox Width="50" Text="{Binding ListByteKey[4]}"/>
+            <TextBlock Text="-"/>
+            <TextBox Width="50" Text="{Binding ListByteKey[5]}"/>
+            <TextBlock Text="-"/>
+            <TextBox Width="50" Text="{Binding ListByteKey[6]}"/>
+            <TextBlock Text="-"/>
+            <TextBox Width="50" Text="{Binding ListByteKey[7]}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Losuj klucz" Width="100" HorizontalAlignment="Left" Command="{Binding RandomKey_Click}" Margin="5"/>
+            <Button Content="Generuj klucz" Width="100" HorizontalAlignment="Left" Command="{Binding CreatorKey_Click}" Margin="5"/>
+        </StackPanel>
+        <TextBlock Text="Klucz zakodowany Base64"/>
+        <TextBox Width="150" HorizontalAlignment="Left" Text="{Binding KeyBase64}" IsReadOnly="True" />
+    </StackPanel>
+</Page>

@@ -13,6 +13,7 @@ namespace Block_Cipher_Modes_WPF.ViewModels
     {
         private Page BasicBlockCipherModesPage;
         private Page AboutPage;
+        private Page CreatorKeysPage;
 
         private Page _currentPage;
         public Page CurrentPage
@@ -32,6 +33,7 @@ namespace Block_Cipher_Modes_WPF.ViewModels
         {
             BasicBlockCipherModesPage = new Pages.BasicBlockCipherModesPage();
             AboutPage = new Pages.AboutPage();
+            CreatorKeysPage = new Pages.CreatorKeysPage();
 
             FrameOpacity = 1;
             CurrentPage = BasicBlockCipherModesPage;
@@ -57,6 +59,18 @@ namespace Block_Cipher_Modes_WPF.ViewModels
                     () =>
                     {
                         SlowOpacity(AboutPage);
+                    });
+            }
+        }
+
+        public ICommand CreatorKeys_Click
+        {
+            get
+            {
+                return new RelayCommand(
+                    () =>
+                    {
+                        SlowOpacity(CreatorKeysPage);
                     });
             }
         }
