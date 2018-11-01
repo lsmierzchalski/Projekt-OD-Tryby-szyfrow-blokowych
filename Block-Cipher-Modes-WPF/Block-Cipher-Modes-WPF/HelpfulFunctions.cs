@@ -26,12 +26,24 @@ namespace Block_Cipher_Modes_WPF
         public static byte[] AddPaddingZero(byte[] data)
         {
             List<byte> listData = new List<Byte>(data);
-            bool first = true;
-            for (int i=listData.Capacity; i < listData.Capacity/128+1 * 128 - 1; i++)
+            for (int i=listData.Capacity; i < listData.Capacity/16+1 * 16 - 1; i++)
             {
                 listData.Add(1);
             }
             return listData.ToArray();
+        }
+
+        public static byte[] exclusiveOR(byte[] arr1, byte[] arr2)
+        {
+            if (arr1.Length != arr2.Length)
+                throw new ArgumentException("arr1 and arr2 are not the same length");
+
+            byte[] result = new byte[arr1.Length];
+
+            for (int i = 0; i < arr1.Length; ++i)
+                result[i] = (byte)(arr1[i] ^ arr2[i]);
+
+            return result;
         }
     }
 }

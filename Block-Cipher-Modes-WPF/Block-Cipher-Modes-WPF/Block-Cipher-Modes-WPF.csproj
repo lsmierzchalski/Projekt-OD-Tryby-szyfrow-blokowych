@@ -76,6 +76,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BlockCipherModesFunctions.cs" />
+    <Compile Include="FileHelpfulFunctions.cs" />
     <Compile Include="HelpfulFunctions.cs" />
     <Compile Include="ObservableObject.cs" />
     <Compile Include="Pages\AboutPage.xaml.cs">

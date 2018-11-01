@@ -24,11 +24,11 @@
 
         <TextBlock Text="Podstawowe tryby pracy szyfrów blokowych" Margin="5" Grid.ColumnSpan="3"/>
 
-        <Button Grid.Row="1" Content="Wczytaj tekst z pliku" Margin="5" />
+        <Button Grid.Row="1" Content="Wczytaj tekst z pliku" Margin="5" Command="{Binding ReadPlainTextFromFile_Click}" />
         <TextBlock Text="Tekst jawny" Margin="5" Grid.Row="2" />
         <RichTextBox Grid.Row="4" Margin="5" Name="RichTextBoxPlainText"/>
 
-        <Button Grid.Row="1" Grid.Column="2" Content="Wczytaj szyfrogram z pliku" Margin="5" />
+        <Button Grid.Row="1" Grid.Column="2" Content="Wczytaj szyfrogram z pliku" Margin="5" Command="{Binding ReadCipherTextFromFile_Click}"/>
         <TextBlock Text="Szyfrogram" Margin="5" Grid.Row="2" Grid.Column="2" />
         <RichTextBox Grid.Row="4" Grid.Column="2" Margin="5" Name="RichTetBoxCipherText"/>
 
@@ -36,19 +36,19 @@
             <TextBlock Text="Klucz"/>
             <TextBox Text="{Binding Key}" />
             <TextBlock Text="IV"/>
-            <TextBox />
+            <TextBox Text="{Binding IV}"/>
             <Separator Height="20"/>
             <TextBlock Text="Tryb"/>
-            <ComboBox />
+            <ComboBox ItemsSource="{Binding ListModes}" SelectedValue="{Binding SelectMode}" />
             <Separator Height="20"/>
             <Button Content="Szyfruj" Command="{Binding Encrypt_Click}" />
             <StackPanel Margin="5"/>
             <Button Content="Deszyfruj" Command="{Binding Decrypt_Click}" />
             <Separator Height="20"/>
             <TextBlock Text="Czas szyfrowania"/>
-            <TextBox IsReadOnly="True" />
+            <TextBox IsReadOnly="True" Text="{Binding EncryptTime}" />
             <TextBlock Text="Czas deszyfrowania"/>
-            <TextBox IsReadOnly="True" />
+            <TextBox IsReadOnly="True" Text="{Binding DecryptTime}" />
         </StackPanel>
 
     </Grid>
