@@ -51,6 +51,9 @@ namespace Block_Cipher_Modes_WPF.ViewModels
         private string _iv = string.Empty;
         public string IV { get => _iv; set => _iv = value; }
 
+        private string _nonce = string.Empty;
+        public string Nonce { get => _nonce; set => _nonce = value; }
+
         private string _encryptTime = "0 ms";
         public string EncryptTime
         {
@@ -75,7 +78,7 @@ namespace Block_Cipher_Modes_WPF.ViewModels
 
         private ObservableCollection<string> _listModes = new ObservableCollection<string>()
         {
-            "ECB", "CBC", "PCBC", "CFB", "OFB"
+            "ECB", "CBC", "PCBC", "CFB", "OFB", "CTR"
         };
         public ObservableCollection<string> ListModes { get => _listModes; set => _listModes = value; }
 
@@ -164,7 +167,10 @@ namespace Block_Cipher_Modes_WPF.ViewModels
                         break;
                     case "OFB":
                         byteArrayCipherText = BlockCipherModesFunctions.OutputFeedbackModeEncypt(bytesPlaintext, Convert.FromBase64String(Key), Convert.FromBase64String(IV));
-                        break; 
+                        break;
+                    case "CTR":
+                        byteArrayCipherText = BlockCipherModesFunctions.CounterModeEncypt(bytesPlaintext, Convert.FromBase64String(Key), Convert.FromBase64String(Nonce));
+                        break;
                 }
                 watch.Stop();
                 var elapsedMs = watch.ElapsedMilliseconds;
@@ -203,6 +209,9 @@ namespace Block_Cipher_Modes_WPF.ViewModels
                         break;
                     case "OFB":
                         byteArrayPlainText = BlockCipherModesFunctions.OutputFeedbackModeEncypt(bytesCipherText, Convert.FromBase64String(Key), Convert.FromBase64String(IV));
+                        break;
+                    case "CTR":
+                        byteArrayPlainText = BlockCipherModesFunctions.CounterModeEncypt(bytesCipherText, Convert.FromBase64String(Key), Convert.FromBase64String(Nonce));
                         break;
                 }
                 watch.Stop();

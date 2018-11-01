@@ -51,7 +51,9 @@
             <Button Content="Losuj klucz" Width="100" HorizontalAlignment="Left" Command="{Binding RandomKey_Click}" Margin="5"/>
             <Button Content="Generuj klucz" Width="100" HorizontalAlignment="Left" Command="{Binding CreatorKey_Click}" Margin="5"/>
         </StackPanel>
-        <TextBlock Text="Klucz zakodowany Base64"/>
+        <TextBlock Text="Klucz 128 bitowy zakodowany Base64"/>
         <TextBox Width="250" HorizontalAlignment="Left" Text="{Binding KeyBase64}" IsReadOnly="True" />
+        <TextBlock Text="Klucz 64 bitowy zakodowany Base64"/>
+        <TextBox Width="250" HorizontalAlignment="Left" Text="{Binding KeyBase64_64bit}" IsReadOnly="True" />
     </StackPanel>
 </Page>

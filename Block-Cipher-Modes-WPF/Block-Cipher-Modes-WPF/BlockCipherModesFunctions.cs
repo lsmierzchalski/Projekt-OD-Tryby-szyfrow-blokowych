@@ -43,7 +43,7 @@ namespace Block_Cipher_Modes_WPF
             for (int i = 0; i < plaintext.Length / 16; i++)
             {
                 byte[] bytesBlock = HelpfulFunctions.SubArrayDeepClone(plaintext, i * 16, 16);
-                bytesBlock = HelpfulFunctions.exclusiveOR(bytesBlock, tmp);
+                bytesBlock = HelpfulFunctions.ExclusiveOR(bytesBlock, tmp);
                 tmp = AESFunctions.AES_encrypt_block(bytesBlock, key);
                 listByteCiphertext.AddRange(tmp);
             }
@@ -61,7 +61,7 @@ namespace Block_Cipher_Modes_WPF
                 byte[] bytesBlock = HelpfulFunctions.SubArrayDeepClone(ciphertext, i * 16, 16);
                 byte[] bytesFromDecryptor = AESFunctions.AES_Decrypt_block(bytesBlock, key);
 
-                listBytePlaintext.AddRange(HelpfulFunctions.exclusiveOR(bytesFromDecryptor, tmp));
+                listBytePlaintext.AddRange(HelpfulFunctions.ExclusiveOR(bytesFromDecryptor, tmp));
                 tmp = bytesBlock;
             }
 
@@ -76,10 +76,10 @@ namespace Block_Cipher_Modes_WPF
             for (int i = 0; i < plaintext.Length / 16; i++)
             {
                 byte[] bytesBlock = HelpfulFunctions.SubArrayDeepClone(plaintext, i * 16, 16);
-                bytesBlock = HelpfulFunctions.exclusiveOR(bytesBlock, tmp);
+                bytesBlock = HelpfulFunctions.ExclusiveOR(bytesBlock, tmp);
                 byte[] bytesFromAES = AESFunctions.AES_encrypt_block(bytesBlock, key);
                 listByteCiphertext.AddRange(bytesFromAES);
-                tmp = HelpfulFunctions.exclusiveOR(bytesBlock, bytesFromAES);
+                tmp = HelpfulFunctions.ExclusiveOR(bytesBlock, bytesFromAES);
             }
 
             return listByteCiphertext.ToArray();
@@ -94,9 +94,9 @@ namespace Block_Cipher_Modes_WPF
             {
                 byte[] bytesBlock = HelpfulFunctions.SubArrayDeepClone(ciphertext, i * 16, 16);
                 byte[] bytesFromDecryptor = AESFunctions.AES_Decrypt_block(bytesBlock, key);
-                byte[] plaintextBlock = HelpfulFunctions.exclusiveOR(bytesFromDecryptor, tmp);
+                byte[] plaintextBlock = HelpfulFunctions.ExclusiveOR(bytesFromDecryptor, tmp);
                 listBytePlaintext.AddRange(plaintextBlock);
-                tmp = HelpfulFunctions.exclusiveOR(bytesBlock,plaintextBlock);
+                tmp = HelpfulFunctions.ExclusiveOR(bytesBlock,plaintextBlock);
             }
 
             return listBytePlaintext.ToArray();
@@ -111,7 +111,7 @@ namespace Block_Cipher_Modes_WPF
             {
                 byte[] bytesFromAES = AESFunctions.AES_encrypt_block(tmp, key);
                 byte[] bytesBlock = HelpfulFunctions.SubArrayDeepClone(plaintext, i * 16, 16);
-                byte[] bytesBeforXOR = HelpfulFunctions.exclusiveOR(bytesBlock, bytesFromAES);
+                byte[] bytesBeforXOR = HelpfulFunctions.ExclusiveOR(bytesBlock, bytesFromAES);
                 listByteCiphertext.AddRange(bytesBeforXOR);
                 tmp = bytesBeforXOR;
             }
@@ -128,7 +128,7 @@ namespace Block_Cipher_Modes_WPF
             {
                 byte[] bytesBlock = HelpfulFunctions.SubArrayDeepClone(ciphertext, i * 16, 16);
                 byte[] bytesFromEncrypt = AESFunctions.AES_encrypt_block(tmp, key);
-                listBytePlaintext.AddRange(HelpfulFunctions.exclusiveOR(bytesFromEncrypt, bytesBlock));
+                listBytePlaintext.AddRange(HelpfulFunctions.ExclusiveOR(bytesFromEncrypt, bytesBlock));
                 tmp = bytesBlock;
             }
 
@@ -144,13 +144,34 @@ namespace Block_Cipher_Modes_WPF
             {
                 byte[] bytesFromAES = AESFunctions.AES_encrypt_block(tmp, key);
                 byte[] bytesBlock = HelpfulFunctions.SubArrayDeepClone(plaintext, i * 16, 16);
-                bytesBlock = HelpfulFunctions.exclusiveOR(bytesBlock, tmp);
-                listByteCiphertext.AddRange(HelpfulFunctions.exclusiveOR(bytesBlock, bytesFromAES));
+                bytesBlock = HelpfulFunctions.ExclusiveOR(bytesBlock, tmp);
+                listByteCiphertext.AddRange(HelpfulFunctions.ExclusiveOR(bytesBlock, bytesFromAES));
                 tmp = bytesFromAES;
             }
 
             return listByteCiphertext.ToArray();
         }
-        
+
+        public static byte[] CounterModeEncypt(byte[] plaintext, byte[] key, byte[] nonce)
+        {
+            List<byte> listByteCiphertext = new List<byte>();
+            byte[] counter = { 0, 0, 0, 0, 0, 0, 0, 0 };
+
+            for (int i = 0; i < plaintext.Length / 16; i++)
+            {
+                List<byte> tmp = new List<byte>();
+                tmp.AddRange(nonce);
+                tmp.AddRange(counter);
+
+                byte[] bytesFromAES = AESFunctions.AES_encrypt_block(tmp.ToArray(), key);
+                byte[] bytesBlock = HelpfulFunctions.SubArrayDeepClone(plaintext, i * 16, 16);
+                listByteCiphertext.AddRange(HelpfulFunctions.ExclusiveOR(bytesBlock, bytesFromAES));
+
+                counter = HelpfulFunctions.AddOneToByteArray(counter);
+            }
+
+            return listByteCiphertext.ToArray();
+        }
+
     }
 }

@@ -33,10 +33,12 @@
         <RichTextBox Grid.Row="4" Grid.Column="2" Margin="5" Name="RichTetBoxCipherText"/>
 
         <StackPanel Grid.Row="4" Grid.Column="1" >
-            <TextBlock Text="Klucz"/>
+            <TextBlock Text="Klucz (128 bitów)"/>
             <TextBox Text="{Binding Key}" />
-            <TextBlock Text="IV"/>
+            <TextBlock Text="IV (128 bitów)"/>
             <TextBox Text="{Binding IV}"/>
+            <TextBlock Text="Nonce (64 bity)"/>
+            <TextBox Text="{Binding Nonce}"/>
             <Separator Height="20"/>
             <TextBlock Text="Tryb"/>
             <ComboBox ItemsSource="{Binding ListModes}" SelectedValue="{Binding SelectMode}" />

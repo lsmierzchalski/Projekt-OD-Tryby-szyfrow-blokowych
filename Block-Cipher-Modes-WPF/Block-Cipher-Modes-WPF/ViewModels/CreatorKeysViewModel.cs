@@ -38,6 +38,21 @@ namespace Block_Cipher_Modes_WPF.ViewModels
             }
         }
 
+        private string _keyBase64_64bit = string.Empty;
+
+        public string KeyBase64_64bit
+        {
+            get
+            {
+                return _keyBase64_64bit;
+            }
+            set
+            {
+                _keyBase64_64bit = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         public ICommand RandomKey_Click
         {
@@ -59,6 +74,7 @@ namespace Block_Cipher_Modes_WPF.ViewModels
                     () =>
                     {
                         KeyBase64 = Convert.ToBase64String(ListByteKey.ToArray());
+                        KeyBase64_64bit = Convert.ToBase64String(HelpfulFunctions.SubArrayDeepClone(ListByteKey.ToArray(), 0, 8));
                     });
             }
         }
@@ -78,6 +94,7 @@ namespace Block_Cipher_Modes_WPF.ViewModels
             }
             ListByteKey = newListByteKey;
             KeyBase64 = Convert.ToBase64String(ListByteKey.ToArray());
+            KeyBase64_64bit = Convert.ToBase64String(HelpfulFunctions.SubArrayDeepClone(ListByteKey.ToArray(), 0, 8));
         }
     }
 }

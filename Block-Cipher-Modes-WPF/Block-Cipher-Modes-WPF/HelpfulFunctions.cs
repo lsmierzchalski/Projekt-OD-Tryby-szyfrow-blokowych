@@ -33,7 +33,7 @@ namespace Block_Cipher_Modes_WPF
             return listData.ToArray();
         }
 
-        public static byte[] exclusiveOR(byte[] arr1, byte[] arr2)
+        public static byte[] ExclusiveOR(byte[] arr1, byte[] arr2)
         {
             if (arr1.Length != arr2.Length)
                 throw new ArgumentException("arr1 and arr2 are not the same length");
@@ -44,6 +44,19 @@ namespace Block_Cipher_Modes_WPF
                 result[i] = (byte)(arr1[i] ^ arr2[i]);
 
             return result;
+        }
+
+        public static byte[] AddOneToByteArray(byte[] array)
+        {
+            for(int i=array.Length-1; i>=0; i--)
+            {
+                if (array[i] < 255)
+                {
+                    array[i]++;
+                    break;
+                }
+            }
+            return array;
         }
     }
 }
