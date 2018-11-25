@@ -18,7 +18,8 @@ namespace Block_Cipher_Modes_WPF.ViewModels
         {
             get
             {
-                _plainText = new TextRange(RichTextBoxPlainText.Document.ContentStart, RichTextBoxPlainText.Document.ContentEnd).Text;
+                string tmp = new TextRange(RichTextBoxPlainText.Document.ContentStart, RichTextBoxPlainText.Document.ContentEnd).Text;
+                _plainText = tmp.Substring(0,tmp.Length-2);
                 return _plainText;
             }
             set
@@ -34,7 +35,8 @@ namespace Block_Cipher_Modes_WPF.ViewModels
         {
             get
             {
-                _cipherText = new TextRange(RichTetBoxCipherText.Document.ContentStart, RichTetBoxCipherText.Document.ContentEnd).Text;
+                string tmp = new TextRange(RichTetBoxCipherText.Document.ContentStart, RichTetBoxCipherText.Document.ContentEnd).Text;
+                _cipherText = tmp.Substring(0, tmp.Length - 2);
                 return _cipherText;
             }
             set
@@ -45,13 +47,13 @@ namespace Block_Cipher_Modes_WPF.ViewModels
             }
         }
 
-        private string _key = string.Empty;
+        private string _key = "AAAAAAAAAAAAAAAAAAAAAA==";// string.Empty;
         public string Key { get => _key; set => _key = value; }
 
-        private string _iv = string.Empty;
+        private string _iv = "AAAAAAAAAAAAAAAAAAAAAA==";// string.Empty;
         public string IV { get => _iv; set => _iv = value; }
 
-        private string _nonce = string.Empty;
+        private string _nonce = "AAAAAAAAAAA=";// string.Empty;
         public string Nonce { get => _nonce; set => _nonce = value; }
 
         private string _encryptTime = "0 ms";
@@ -78,7 +80,7 @@ namespace Block_Cipher_Modes_WPF.ViewModels
 
         private ObservableCollection<string> _listModes = new ObservableCollection<string>()
         {
-            "ECB", "CBC", "PCBC", "CFB", "OFB", "CTR"
+            "ECB", "CBC", "PCBC", "CFB", "OFB", "CTR", "PBC", "BC", "PCBC2", "CBCC"
         };
         public ObservableCollection<string> ListModes { get => _listModes; set => _listModes = value; }
 
@@ -171,6 +173,15 @@ namespace Block_Cipher_Modes_WPF.ViewModels
                     case "CTR":
                         byteArrayCipherText = BlockCipherModesFunctions.CounterModeEncypt(bytesPlaintext, Convert.FromBase64String(Key), Convert.FromBase64String(Nonce));
                         break;
+                    case "PBC":
+                        byteArrayCipherText = BlockCipherModesFunctions.PlaintextBlockChainingModeEncypt(bytesPlaintext, Convert.FromBase64String(Key), Convert.FromBase64String(IV));
+                        break;
+                    case "BC":
+                        byteArrayCipherText = BlockCipherModesFunctions.BlockChainingModeEncypt(bytesPlaintext, Convert.FromBase64String(Key), Convert.FromBase64String(IV));
+                        break;
+                    case "PCBC2":
+                        byteArrayCipherText = BlockCipherModesFunctions.PropagatingCipherBlockChainingMode2Encypt(bytesPlaintext, Convert.FromBase64String(Key), Convert.FromBase64String(IV));
+                        break;
                 }
                 watch.Stop();
                 var elapsedMs = watch.ElapsedMilliseconds;
@@ -212,6 +223,15 @@ namespace Block_Cipher_Modes_WPF.ViewModels
                         break;
                     case "CTR":
                         byteArrayPlainText = BlockCipherModesFunctions.CounterModeEncypt(bytesCipherText, Convert.FromBase64String(Key), Convert.FromBase64String(Nonce));
+                        break;
+                    case "PBC":
+                        byteArrayPlainText = BlockCipherModesFunctions.PlaintextBlockChainingModeDecrypt(bytesCipherText, Convert.FromBase64String(Key), Convert.FromBase64String(IV));
+                        break;
+                    case "BC":
+                        byteArrayPlainText = BlockCipherModesFunctions.BlockChainingModeDecrypt(bytesCipherText, Convert.FromBase64String(Key), Convert.FromBase64String(IV));
+                        break;
+                    case "PCBC2":
+                        byteArrayPlainText = BlockCipherModesFunctions.PropagatingCipherBlockChainingMode2Decrypt(bytesCipherText, Convert.FromBase64String(Key), Convert.FromBase64String(IV));
                         break;
                 }
                 watch.Stop();

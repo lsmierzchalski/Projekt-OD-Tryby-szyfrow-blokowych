@@ -26,7 +26,10 @@ namespace Block_Cipher_Modes_WPF
         public static byte[] AddPaddingZero(byte[] data)
         {
             List<byte> listData = new List<Byte>(data);
-            for (int i=listData.Capacity; i < listData.Capacity/16+1 * 16 - 1; i++)
+            int plus_one_or_not = 1;
+            if (listData.Count % 16 == 0) { plus_one_or_not = 0; }
+            int size_16 = (listData.Count / 16 + plus_one_or_not) * 16;
+            for (int i=listData.Count; i < size_16; i++)
             {
                 listData.Add(1);
             }
