@@ -82,6 +82,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\HMACPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TimeTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -94,6 +102,7 @@
     <Compile Include="BlockCipherModesFunctions.cs" />
     <Compile Include="FileHelpfulFunctions.cs" />
     <Compile Include="HelpfulFunctions.cs" />
+    <Compile Include="Models\SampleTimeTest.cs" />
     <Compile Include="ObservableObject.cs" />
     <Compile Include="Pages\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
@@ -104,10 +113,18 @@
     <Compile Include="Pages\CreatorKeysPage.xaml.cs">
       <DependentUpon>CreatorKeysPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\HMACPage.xaml.cs">
+      <DependentUpon>HMACPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TimeTestPage.xaml.cs">
+      <DependentUpon>TimeTestPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RelayCommand.cs" />
     <Compile Include="ViewModels\BasicBlockCipherModesViewModel.cs" />
     <Compile Include="ViewModels\CreatorKeysViewModel.cs" />
+    <Compile Include="ViewModels\HMACViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\TimeTestViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -140,9 +157,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
       <Visible>False</Visible>

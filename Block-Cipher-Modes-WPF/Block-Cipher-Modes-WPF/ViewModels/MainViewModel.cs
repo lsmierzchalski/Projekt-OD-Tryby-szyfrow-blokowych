@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -14,6 +10,8 @@ namespace Block_Cipher_Modes_WPF.ViewModels
         private Page BasicBlockCipherModesPage;
         private Page AboutPage;
         private Page CreatorKeysPage;
+        private Page HMACPage;
+        private Page TimeTestPage;
 
         private Page _currentPage;
         public Page CurrentPage
@@ -34,6 +32,8 @@ namespace Block_Cipher_Modes_WPF.ViewModels
             BasicBlockCipherModesPage = new Pages.BasicBlockCipherModesPage();
             AboutPage = new Pages.AboutPage();
             CreatorKeysPage = new Pages.CreatorKeysPage();
+            HMACPage = new Pages.HMACPage();
+            TimeTestPage = new Pages.TimeTestPage();
 
             FrameOpacity = 1;
             CurrentPage = BasicBlockCipherModesPage;
@@ -71,6 +71,30 @@ namespace Block_Cipher_Modes_WPF.ViewModels
                     () =>
                     {
                         SlowOpacity(CreatorKeysPage);
+                    });
+            }
+        }
+        
+        public ICommand HMAC_Click
+        {
+            get
+            {
+                return new RelayCommand(
+                    () =>
+                    {
+                        SlowOpacity(HMACPage);
+                    });
+            }
+        }
+
+        public ICommand TimeTestPage_Click
+        {
+            get
+            {
+                return new RelayCommand(
+                    () =>
+                    {
+                        SlowOpacity(TimeTestPage);
                     });
             }
         }

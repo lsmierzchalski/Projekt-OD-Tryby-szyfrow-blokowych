@@ -80,7 +80,7 @@ namespace Block_Cipher_Modes_WPF.ViewModels
 
         private ObservableCollection<string> _listModes = new ObservableCollection<string>()
         {
-            "ECB", "CBC", "PCBC", "CFB", "OFB", "CTR", "PBC", "BC", "PCBC2", "CBCC"
+            "ECB", "CBC", "PCBC", "CFB", "OFB", "CTR", "PBC", "BC"
         };
         public ObservableCollection<string> ListModes { get => _listModes; set => _listModes = value; }
 

@@ -14,8 +14,8 @@
         <StackPanel>
             <Button Command="{Binding CreatorKeys_Click}" Content="Generator kluczy" Margin="5"/>
             <Button Command="{Binding BasicBlockCipherModes_Click}" Content="Podstawowe tryby" Margin="5"/>
-            <Button Command="{Binding Zadanie2_Click}" Content="Zadanie 2" Margin="5" IsEnabled="False"/>
-            <Button Command="{Binding Zadanie3_Click}" Content="Zadanie 3" Margin="5" IsEnabled="False"/>
+            <Button Command="{Binding HMAC_Click}" Content="HMAC" Margin="5"/>
+            <Button Command="{Binding TimeTestPage_Click}" Content="Test szybkości" Margin="5"/>
             <Button Command="{Binding Zadanie4_Click}" Content="Zadanie 4" Margin="5" IsEnabled="False"/>
             <Button Command="{Binding About_Click}" Content="O programie" Margin="5" />
         </StackPanel>
